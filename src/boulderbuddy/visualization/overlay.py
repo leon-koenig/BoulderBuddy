@@ -1,4 +1,18 @@
 import cv2
+import mediapipe as mp
+
+mp_drawing = mp.solutions.drawing_utils
+mp_pose = mp.solutions.pose
+
+
+def draw_pose(frame, pose_result):
+    if pose_result.detected and pose_result.landmarks is not None:
+        mp_drawing.draw_landmarks(
+            frame,
+            pose_result.landmarks,
+            mp_pose.POSE_CONNECTIONS,
+        )
+    return frame
 
 
 def draw_feedback(frame, feedback: list[str]):
