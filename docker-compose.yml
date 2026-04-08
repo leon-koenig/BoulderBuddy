@@ -1,0 +1,9 @@
+services:
+  boulderbuddy:
+    build: .
+    container_name: boulderbuddy
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app/src
+    command: python -m boulderbuddy.main
